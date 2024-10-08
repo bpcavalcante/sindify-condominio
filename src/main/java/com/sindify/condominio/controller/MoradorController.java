@@ -2,6 +2,7 @@ package com.sindify.condominio.controller;
 
 import com.sindify.condominio.dto.MoradorDTO;
 import com.sindify.condominio.service.MoradorService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +39,7 @@ public class MoradorController {
     }
 
     @PostMapping
-    public ResponseEntity<MoradorDTO> cadastrarMorador(@RequestBody MoradorDTO moradorDTO) {
+    public ResponseEntity<MoradorDTO> cadastrarMorador(@Valid @RequestBody MoradorDTO moradorDTO) {
         moradorDTO = moradorService.cadastrarMorador(moradorDTO);
         return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(moradorDTO);
     }
